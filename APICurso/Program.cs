@@ -1,5 +1,11 @@
+using WebApplication1.Helpers;
+using WebApplication1.Repositories;
+
 var builder = WebApplication.CreateBuilder(args);
 
+// Registrando o repositório como serviço 
+builder.Services.AddScoped<TarefaRepositorio>(provider =>
+    new TarefaRepositorio(ConfigurationHelper.GetAppSetting<string>("ConnectionStrings:DefaultConnection")));
 // Add services to the container.
 
 builder.Services.AddControllers();
