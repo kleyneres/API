@@ -19,7 +19,11 @@ namespace WebApplication1.Controllers
         [HttpGet]
         public IActionResult GetTarefas()
         {
-            var tarefas = _context.Tarefas.ToList(); // Use ToList()
+            var tarefas = _context.Tarefas.ToList();
+
+            tarefas = tarefas.OrderBy(t => t.Prazo).ToList();
+            
+            // Use ToList()
             return Ok(tarefas);
         }
 
@@ -38,6 +42,9 @@ namespace WebApplication1.Controllers
         [HttpPost]
         public IActionResult CreateTarefa([FromBody] Tarefa tarefa)
         {
+
+            tarefa.DataCriacao = DateTime.Now;
+
             if (tarefa.Titulo == "")
             {
                 throw new Exception("Envie o título");
@@ -67,6 +74,7 @@ namespace WebApplication1.Controllers
             tarefaExistente.Titulo = tarefaAtualizada.Titulo;
             tarefaExistente.Descricao = tarefaAtualizada.Descricao;
             tarefaExistente.Prazo = tarefaAtualizada.Prazo;
+            tarefaExistente.DataConclusao = tarefaAtualizada.DataConclusao;
             tarefaExistente.Concluida = tarefaAtualizada.Concluida;
 
             _context.SaveChanges(); // Use SaveChanges() em vez de SaveChangesAsync()

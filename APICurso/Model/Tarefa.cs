@@ -18,11 +18,10 @@ namespace WebApplication1.Model
         public string Descricao { get; set; }
 
         //[Required]
-        //public DateTime DataCriacao { get; set; } = DateTime.Now; 
+        public DateTime? DataCriacao { get; set; }
 
-        //public DateTime? DataConclusao { get; set; } 
+        public DateTime? DataConclusao { get; set; }
 
-        [Required]
         public DateTime Prazo { get; set; }
 
         [Required]

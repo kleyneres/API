@@ -175,7 +175,6 @@
       "Tarefa": {
         "required": [
           "concluida",
-          "prazo",
           "titulo"
         ],
         "type": "object",
@@ -192,6 +191,16 @@
           "descricao": {
             "maxLength": 500,
             "type": "string",
+            "nullable": true
+          },
+          "dataCriacao": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "dataConclusao": {
+            "type": "string",
+            "format": "date-time",
             "nullable": true
           },
           "prazo": {
